@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Crónica — Formulario de contacto." />
+  <title>Contacto — La Crónica</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="container">
+      <span class="header-top-date mono">Lunes, 14 de septiembre de 2026</span>
+      <span class="header-top-tag">Edición Digital</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="container">
+      <a href="index.html" class="site-logo">
+        <span class="site-logo-name">La Crónica</span>
+        <span class="site-logo-sub">Plataforma de Noticias</span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html"     class="nav-link" data-page="home">Inicio</a>
+        <a href="noticias.html"  class="nav-link" data-page="noticias">Noticias</a>
+        <a href="favoritos.html" class="nav-link" data-page="favoritos">
+          Favoritos <span class="fav-badge" style="display:none">0</span>
+        </a>
+        <a href="contacto.html"  class="nav-link" data-page="contacto">Contacto</a>
+        <a href="admin.html"     class="nav-link" data-page="admin">Administrar</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html"     class="nav-link" data-page="home">Inicio</a>
+    <a href="noticias.html"  class="nav-link" data-page="noticias">Noticias</a>
+    <a href="favoritos.html" class="nav-link" data-page="favoritos">Favoritos</a>
+    <a href="contacto.html"  class="nav-link" data-page="contacto">Contacto</a>
+    <a href="admin.html"     class="nav-link" data-page="admin">Administrar</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main class="page-main">
+  <div class="container">
+
+    <!-- Pantalla de éxito (oculta por defecto) -->
+    <div id="successScreen" style="display:none; padding: 2rem 0;">
+      <div class="success-card">
+        <div class="success-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2 class="success-title display">¡Mensaje enviado!</h2>
+        <p id="successMsg" style="color:var(--ink-light); margin-bottom:1.5rem; line-height:1.7;"></p>
+        <button class="btn btn-outline" id="sendAnotherBtn">Enviar otro mensaje</button>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <div id="contactSection">
+      <div class="page-title-wrap">
+        <h1 class="page-title display">Contacto</h1>
+        <div class="divider-accent"></div>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Info -->
+        <div>
+          <p style="color:var(--ink-light); line-height:1.75; margin-bottom:2rem;">
+            ¿Tienes una noticia para reportar, una corrección que hacernos, o simplemente
+            quieres hablar con nuestro equipo? Escríbenos y te responderemos pronto.
+          </p>
+
+          <div class="contact-info-item">
+            <p class="contact-info-label">Redacción general</p>
+            <p class="contact-info-value">redaccion@lacronica.co</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Publicidad</p>
+            <p class="contact-info-value">publicidad@lacronica.co</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Teléfono</p>
+            <p class="contact-info-value">+57 601 234 5678</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="contact-info-label">Dirección</p>
+            <p class="contact-info-value">Cra. 7 #74-21, Bogotá, Colombia</p>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <form id="contactForm" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="inputName">Nombre completo *</label>
+            <input
+              class="form-control" id="inputName" type="text"
+              placeholder="Tu nombre completo" autocomplete="name"
+            />
+            <p class="form-error" id="errorName" style="display:none;"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputEmail">Correo electrónico *</label>
+            <input
+              class="form-control" id="inputEmail" type="email"
+              placeholder="nombre@correo.com" autocomplete="email"
+            />
+            <p class="form-error" id="errorEmail" style="display:none;"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputSubject">Asunto *</label>
+            <input
+              class="form-control" id="inputSubject" type="text"
+              placeholder="¿De qué se trata tu mensaje?"
+            />
+            <p class="form-error" id="errorSubject" style="display:none;"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputMessage">Mensaje *</label>
+            <textarea
+              class="form-control" id="inputMessage" rows="5"
+              placeholder="Escribe tu mensaje aquí (mínimo 20 caracteres)..."
+            ></textarea>
+            <p class="form-error" id="errorMessage" style="display:none;"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">La Crónica</a>
+        <p class="footer-desc">Periodismo digital independiente para Colombia y el mundo.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Secciones</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="favoritos.html">Favoritos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="admin.html">Administrar</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Contacto</p>
+        <ul class="footer-contact">
+          <li>redaccion@lacronica.co</li>
+          <li>+57 601 234 5678</li>
+          <li>Bogotá, Colombia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span class="footer-copy mono">&copy; 2026 La Crónica — Todos los derechos reservados</span>
+      <span class="mono" style="font-size:0.7rem;">Hecho con HTML, CSS y JavaScript</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  /* ── Lógica de la página Contacto ────────────────────────── */
+  document.addEventListener("DOMContentLoaded", () => {
+    setActiveNav("contacto");
+
+    const form          = document.getElementById("contactForm");
+    const contactSection = document.getElementById("contactSection");
+    const successScreen = document.getElementById("successScreen");
+    const successMsg    = document.getElementById("successMsg");
+
+    /* ── Validación ─────────────────────────────────────────── */
+
+    /**
+     * Muestra u oculta el error de un campo.
+     * @param {string} inputId   — id del <input>
+     * @param {string} errorId   — id del <p class="form-error">
+     * @param {string} message   — texto del error (vacío = sin error)
+     * @returns {boolean}  true si hay error
+     */
+    function setError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (message) {
+        input.classList.add("error");
+        error.textContent    = message;
+        error.style.display  = "block";
+        return true;
+      } else {
+        input.classList.remove("error");
+        error.style.display = "none";
+        return false;
+      }
+    }
+
+    function validateForm(data) {
+      let hasError = false;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!data.name.trim())
+        hasError = setError("inputName", "errorName", "El nombre es obligatorio.") || hasError;
+      else
+        setError("inputName", "errorName", "");
+
+      if (!data.email.trim())
+        hasError = setError("inputEmail", "errorEmail", "El correo es obligatorio.") || hasError;
+      else if (!emailRegex.test(data.email))
+        hasError = setError("inputEmail", "errorEmail", "Ingresa un correo electrónico válido.") || hasError;
+      else
+        setError("inputEmail", "errorEmail", "");
+
+      if (!data.subject.trim())
+        hasError = setError("inputSubject", "errorSubject", "El asunto es obligatorio.") || hasError;
+      else
+        setError("inputSubject", "errorSubject", "");
+
+      if (!data.message.trim())
+        hasError = setError("inputMessage", "errorMessage", "El mensaje es obligatorio.") || hasError;
+      else if (data.message.trim().length < 20)
+        hasError = setError("inputMessage", "errorMessage", "El mensaje debe tener al menos 20 caracteres.") || hasError;
+      else
+        setError("inputMessage", "errorMessage", "");
+
+      return !hasError;
+    }
+
+    /* ── Submit ─────────────────────────────────────────────── */
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const data = {
+        name:    document.getElementById("inputName").value,
+        email:   document.getElementById("inputEmail").value,
+        subject: document.getElementById("inputSubject").value,
+        message: document.getElementById("inputMessage").value,
+      };
+
+      if (!validateForm(data)) return;
+
+      /* Mostrar pantalla de éxito */
+      contactSection.style.display = "none";
+      successScreen.style.display  = "block";
+      successMsg.innerHTML =
+        `Gracias, <strong>${data.name}</strong>. Hemos recibido tu mensaje y te responderemos
+         a <strong>${data.email}</strong> en los próximos días hábiles.`;
+    });
+
+    /* Volver al formulario limpio */
+    document.getElementById("sendAnotherBtn").addEventListener("click", () => {
+      form.reset();
+      ["inputName","inputEmail","inputSubject","inputMessage"].forEach(id => {
+        document.getElementById(id).classList.remove("error");
+      });
+      ["errorName","errorEmail","errorSubject","errorMessage"].forEach(id => {
+        document.getElementById(id).style.display = "none";
+      });
+      successScreen.style.display  = "none";
+      contactSection.style.display = "block";
+    });
+
+    /* Validación en tiempo real al salir de cada campo */
+    ["inputName","inputEmail","inputSubject","inputMessage"].forEach(id => {
+      document.getElementById(id).addEventListener("blur", () => {
+        const data = {
+          name:    document.getElementById("inputName").value,
+          email:   document.getElementById("inputEmail").value,
+          subject: document.getElementById("inputSubject").value,
+          message: document.getElementById("inputMessage").value,
+        };
+        /* Solo valida el campo que perdió el foco */
+        if (id === "inputName")    setError("inputName",    "errorName",    data.name.trim() ? "" : "El nombre es obligatorio.");
+        if (id === "inputEmail") {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!data.email.trim()) setError("inputEmail", "errorEmail", "El correo es obligatorio.");
+          else if (!emailRegex.test(data.email)) setError("inputEmail", "errorEmail", "Ingresa un correo electrónico válido.");
+          else setError("inputEmail", "errorEmail", "");
+        }
+        if (id === "inputSubject") setError("inputSubject", "errorSubject", data.subject.trim() ? "" : "El asunto es obligatorio.");
+        if (id === "inputMessage") {
+          if (!data.message.trim()) setError("inputMessage", "errorMessage", "El mensaje es obligatorio.");
+          else if (data.message.trim().length < 20) setError("inputMessage", "errorMessage", "El mensaje debe tener al menos 20 caracteres.");
+          else setError("inputMessage", "errorMessage", "");
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
